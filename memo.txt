@@ -16,3 +16,29 @@ cd src
 cp ../App.js ./App.tsx
 code ./App.tsx
 code ../index.js
+
+# git管理とアカウント切り替え
+# https://www.sejuku.net/blog/70775
+vi ~/.ssh/config
+```
+# 業務用
+Host github github.com
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa_github
+    IdentitiesOnly yes
+    User git
+
+# 個人用
+Host github_private
+    HostName github.com
+    IdentityFile ~/.ssh/id_rsa_github_private
+    IdentitiesOnly yes
+    User git
+```
+vi ./.git/config
+[user]
+    name = hisayuki-mashimo
+    email = hisayuki.mashimo@befool.co.jp
+[remote "origin"]
+	url = git@github_private:hisayuki-mashimo/react-native-test.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
